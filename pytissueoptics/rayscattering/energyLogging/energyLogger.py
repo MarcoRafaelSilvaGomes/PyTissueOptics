@@ -388,8 +388,10 @@ class EnergyLogger(Logger):
         # Converts volumetric data to fluence rate when needed.
         if not key.volumetric or data is None:
             return data
+        
+        new_data = data.copy()
 
-        data[:, 0] = data[:, 0] / self._scene.getMaterial(key.solidLabel).mu_a
+        new_data[:, 0] = data[:, 0] / self._scene.getMaterial(key.solidLabel).mu_a
         return data
 
     def export(self, exportName: str):
