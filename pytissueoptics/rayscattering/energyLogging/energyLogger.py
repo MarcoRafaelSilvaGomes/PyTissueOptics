@@ -392,7 +392,7 @@ class EnergyLogger(Logger):
         new_data = data.copy()
 
         new_data[:, 0] = data[:, 0] / self._scene.getMaterial(key.solidLabel).mu_a
-        return data
+        return new_data
 
     def export(self, exportName: str):
         """
