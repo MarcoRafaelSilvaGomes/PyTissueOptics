@@ -187,7 +187,7 @@ class Viewer:
         get3DViewer().showVolumeSlicer(hist, interpolate=interpolate)
 
     def show2D(self, view: View2D = None, viewIndex: int = None, logScale: bool = True, colormap: str = "viridis"):
-        self._logger.showView(view=view, viewIndex=viewIndex, logScale=logScale, colormap=colormap)
+        return self._logger.showView(view=view, viewIndex=viewIndex, logScale=logScale, colormap=colormap)
 
     def show2DAllViews(self, viewGroup=ViewGroup.ALL):
         for i in range(len(self._logger.views)):
@@ -209,7 +209,7 @@ class Viewer:
         profile = self._profileFactory.create(
             along, solidLabel, surfaceLabel, surfaceEnergyLeaving, limits, binSize, energyType
         )
-        profile.show(logScale=logScale)
+        return profile.show(logScale=logScale)
 
     def reportStats(self, solidLabel: str = None, saveToFile: str = None, verbose=True):
         stats = Stats(self._logger)

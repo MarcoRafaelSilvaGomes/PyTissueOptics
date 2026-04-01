@@ -35,7 +35,7 @@ class Profile1D:
             limits = (limits[1], limits[0])
         bins = np.linspace(limits[0], limits[1], self.data.size + 1)[:-1]
 
-        plt.bar(bins, self.data, width=np.diff(bins)[0], align="edge")
+        bar_container = plt.bar(bins, self.data, width=np.diff(bins)[0], align="edge")
 
         if logScale:
             plt.yscale("log")
@@ -44,3 +44,5 @@ class Profile1D:
         plt.xlabel("xyz"[self.horizontalDirection.axis])
         plt.ylabel("Deposited energy" if self.energyType == EnergyType.DEPOSITION else "Fluence rate")
         plt.show()
+
+        return bar_container

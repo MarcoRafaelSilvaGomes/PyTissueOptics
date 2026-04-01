@@ -220,11 +220,13 @@ class View2D:
         image = self.getImageData(logScale=logScale)
 
         # N.B.: imshow() expects the data to be (y, x), so we need to transpose the array.
-        plt.imshow(image.T, cmap=cmap, extent=self._limitsU + self._limitsV)
+        ax = plt.imshow(image.T, cmap=cmap, extent=self._limitsU + self._limitsV)
         plt.title(self.name)
         plt.xlabel("xyz"[self.axisU])
         plt.ylabel("xyz"[self.axisV])
         plt.show()
+
+        return ax
 
     def initDataFrom(self, source: "View2D"):
         """Extract data from one view to another when there is only a difference in orientation."""

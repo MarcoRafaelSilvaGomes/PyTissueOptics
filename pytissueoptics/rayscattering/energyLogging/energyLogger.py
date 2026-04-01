@@ -113,7 +113,7 @@ class EnergyLogger(Logger):
         view = self.getView(viewIndex)
         self.updateView(view)
 
-        view.show(logScale=logScale, colormap=colormap)
+        return view.show(logScale=logScale, colormap=colormap)
 
     def listViews(self):
         print("Available views:")
