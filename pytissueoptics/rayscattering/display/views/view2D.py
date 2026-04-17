@@ -224,7 +224,6 @@ class View2D:
         plt.title(self.name)
         plt.xlabel("xyz"[self.axisU])
         plt.ylabel("xyz"[self.axisV])
-        plt.show()
 
         return ax
 

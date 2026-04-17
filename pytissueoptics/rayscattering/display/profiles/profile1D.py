@@ -43,6 +43,5 @@ class Profile1D:
         plt.xlim(*limits)
         plt.xlabel("xyz"[self.horizontalDirection.axis])
         plt.ylabel("Deposited energy" if self.energyType == EnergyType.DEPOSITION else "Fluence rate")
-        plt.show()
 
         return bar_container
