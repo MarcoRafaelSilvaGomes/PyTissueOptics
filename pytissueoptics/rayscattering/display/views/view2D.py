@@ -218,14 +218,29 @@ class View2D:
         cmap.set_bad(cmap.colors[0])
 
         image = self.getImageData(logScale=logScale)
+        vmax = np.max(image)
 
         # N.B.: imshow() expects the data to be (y, x), so we need to transpose the array.
         ax = plt.imshow(image.T, cmap=cmap, extent=self._limitsU + self._limitsV)
         plt.title(self.name)
         plt.xlabel("xyz"[self.axisU])
         plt.ylabel("xyz"[self.axisV])
+        cbar = plt.colorbar(ax)
 
-        return ax
+        current_ticks = list(cbar.get_ticks())
+
+        # remover ticks acima do vmax (por segurança)
+        current_ticks = [t for t in current_ticks if t <= vmax]
+
+        # garantir que o vmax está incluído
+        if vmax not in current_ticks:
+            current_ticks.append(vmax)
+
+        # ordenar
+        current_ticks = sorted(current_ticks)
+        cbar.set_ticks(current_ticks)
+
+        return ax, cbar
 
     def initDataFrom(self, source: "View2D"):
         """Extract data from one view to another when there is only a difference in orientation."""

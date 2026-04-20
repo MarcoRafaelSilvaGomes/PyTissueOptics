@@ -8,11 +8,11 @@ warn = warnings.warn
 
 
 def logNorm(data, eps=1e-6):
-    data /= np.max(data)
-    data = np.log(data + eps)
-    data -= np.min(data)
-    data /= np.max(data)
-    return data
+    logNorm_data = data.copy() / np.max(data)
+    logNorm_data = np.log(logNorm_data + eps)
+    logNorm_data -= np.min(logNorm_data)
+    logNorm_data /= np.max(logNorm_data)
+    return logNorm_data
 
 
 def labelsEqual(label1: str, label2: str) -> bool:
