@@ -221,7 +221,7 @@ class View2D:
         vmax = np.max(image)
 
         # N.B.: imshow() expects the data to be (y, x), so we need to transpose the array.
-        ax = plt.imshow(image.T, cmap=cmap, extent=self._limitsU + self._limitsV)
+        ax = plt.imshow(image.T, cmap=cmap, extent=self._limitsU + self._limitsV, aspect='auto')
         plt.title(self.name)
         plt.xlabel("xyz"[self.axisU])
         plt.ylabel("xyz"[self.axisV])
