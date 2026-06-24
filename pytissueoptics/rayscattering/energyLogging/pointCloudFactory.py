@@ -26,6 +26,8 @@ class PointCloudFactory:
     def getPointCloudOfSolids(self, energyType=EnergyType.DEPOSITION) -> PointCloud:
         points = []
         for solidLabel in self._logger.getStoredSolidLabels():
+            if self._logger._scene.getSolid(solidLabel).isDetector:
+                continue
             solidPoints = self.getPointCloud(solidLabel, energyType=energyType).solidPoints
             if solidPoints is not None:
                 points.append(solidPoints)

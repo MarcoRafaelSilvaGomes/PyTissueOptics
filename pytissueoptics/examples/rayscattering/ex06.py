@@ -1,6 +1,7 @@
 import env  # noqa: F401
 
 from pytissueoptics import *  # noqa: F403
+from matplotlib import pyplot as plt
 
 TITLE = "Detectors"
 
@@ -43,6 +44,7 @@ def exampleCode():
     # Either filter the whole logger
     logger.filter(detectedBy=["detectorA", "detectorB"])
     viewer.show2D(View2DProjectionX())
+    plt.show()
     viewer.show3D()
 
     # ... or keep the logger intact and filter individual views
